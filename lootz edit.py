@@ -2098,7 +2098,8 @@ while True:
 
 
 
-def run_loot(level):
+def run_loot(level):␍␊
+def run_loot(level):␊
     """Run the embedded loot generator once and return its output."""
     with tempfile.NamedTemporaryFile('w', delete=False, suffix='.py') as tmp:
         tmp.write(CLI_SCRIPT)
@@ -2128,6 +2129,27 @@ def run_loot(level):
     if output.startswith(prompt):
         output = output[len(prompt):]
     return output
+    prompt = 'Encounter level? (1-30) '
+    if output.startswith(prompt):
+        output = output[len(prompt):]
+    return output
+
+
+def _extract_magic_item(output):
+    parts = output.split('-----------------------------------')
+    if len(parts) >= 4:
+        return parts[3].strip() or 'No magic item generated.'
+    return 'No magic item generated.'
+
+
+def run_magic_item(level, attempts=5):
+    """Return a magic item for the given level, retrying if none found."""
+    item = 'No magic item generated.'
+    for _ in range(attempts):
+        item = _extract_magic_item(run_loot(level))
+        if 'no magic item' not in item.lower():
+            break
+    return item
 
 
 class LootzApp(tk.Tk):
@@ -2140,12 +2162,33 @@ class LootzApp(tk.Tk):
         tk.Button(self, text='Generate Loot', command=self.generate).pack(pady=5)
         self.output = scrolledtext.ScrolledText(self, width=80, height=30)
         self.output.pack(pady=5)
+        self.level_entry = tk.Entry(self)
+        self.level_entry.pack(pady=5)
+        tk.Button(self, text='Generate Loot', command=self.generate).pack(pady=5)
+        tk.Button(self, text='Generate Magic Item', command=self.generate_magic).pack(pady=5)
+        self.output = scrolledtext.ScrolledText(self, width=80, height=30)
+        self.output.pack(pady=5)
 
     def generate(self):
         level = self.level_entry.get().strip()
         if not level:
             return
         result = run_loot(level)
+        self.output.delete('1.0', tk.END)
+        self.output.insert(tk.END, result)
+    def generate(self):
+        level = self.level_entry.get().strip()
+        if not level:
+            return
+        result = run_loot(level)
+        self.output.delete('1.0', tk.END)
+        self.output.insert(tk.END, result)
+
+    def generate_magic(self):
+        level = self.level_entry.get().strip()
+        if not level:
+            return
+        result = run_magic_item(level)
         self.output.delete('1.0', tk.END)
         self.output.insert(tk.END, result)
 
