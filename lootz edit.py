@@ -241,7 +241,7 @@ while True:
                         'Black Iron Banded', 'Glassteel Banded', 'Ironwood Banded', 'Orichalcon Banded', 'Black Iron Plate', 'Ironwood Plate', 
                         'Black Iron Plate', 'Deep Crystal Plate', 'Glassteel Plate', 'Ironwood Plate', 'Orichalcon Plate', 'Warpstone Plate', 
                         'Orichalcon Plate', "Unique Ancient's Plate", "Unique Ancient's Plate", "Unique Ancient's Plate", 
-                        'Mithril Plate', 'Adamantine Banded', 'Adamantine Plate', 'Dragonsteel Plate''Mithril Plate', 'Adamantine Banded', 'Adamantine Plate', 
+                        'Mithril Plate', 'Adamantine Banded', 'Adamantine Plate', 'Dragonsteel Plate', 'Mithril Plate', 'Adamantine Banded', 'Adamantine Plate',
                         'Dragonsteel Plate', 'Dragonsteel Plate', 'Dragonsteel Plate']
         
         # normal armor list
