@@ -4,7 +4,12 @@ import os
 import tempfile
 import tkinter as tk
 from tkinter import scrolledtext
-import openai
+try:
+    import openai  # optional dependency for art descriptions
+except ModuleNotFoundError:
+    openai = None
+
+openai.api_key = "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"
 
 # Embedded original loot generator script
 CLI_SCRIPT = '''
@@ -2103,21 +2108,35 @@ while True:
         
 
 '''
-'''
 
 
 def generate_art_description():
     """Fetch a random fantasy art object description using ChatGPT."""
-    openai.api_key = os.getenv("OPENAI_API_KEY")
+    if openai is None:
+        raise RuntimeError("openai package is not installed")
+
+    # Load API key from environment variable
+    api_key = os.getenv("OPENAI_API_KEY")
+    if not api_key:
+        raise RuntimeError("OPENAI_API_KEY environment variable not set")
+    openai.api_key = api_key
+
     prompt = (
-        "Give me a short description of a random piece of decorative or fine "
-        "fantasy art that might appear in a treasure hoard."
+        "Give me a short description of a random piece of decorative or fine art "
+        "that might appear in a treasure hoard. Keep it under 60 words."
     )
-    resp = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
-        messages=[{"role": "user", "content": prompt}],
-    )
-    return resp["choices"][0]["message"]["content"].strip()
+
+    try:
+        response = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",
+            messages=[{"role": "user", "content": prompt}],
+            max_tokens=100,
+            temperature=0.8
+        )
+        message = response.get("choices", [{}])[0].get("message", {}).get("content", "")
+        return message.strip()
+    except Exception as e:
+        return "Error fetching art description: {}".format(e)
 
 
 def _maybe_add_art_description(section):
