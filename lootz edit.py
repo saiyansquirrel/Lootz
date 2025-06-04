@@ -23,6 +23,7 @@ import random
 while True:
 
                 
+        #print fancy line
         
         #print separator
         print("")
@@ -75,6 +76,14 @@ while True:
                 
         #ROLL FOR gems and art
         varGemsArt=(random.randint(1,20)) + varEL
+        varD3=(random.randint(1,3))
+        varD4=(random.randint(1,4))
+        varD6=(random.randint(1,6))
+        varD8=(random.randint(1,8))
+        varD10=(random.randint(1,10))
+        varD12=(random.randint(1,12))
+        varD20=(random.randint(1,20))
+        varD00=(random.randint(1,100))
 
         #no gems, get rekt scrub
         if varGemsArt <= 16:
@@ -82,47 +91,47 @@ while True:
         
         #get for ornamental gems
         if varGemsArt >= 17 and varGemsArt <= 21:
-                print("You recieve a", random.choice(varOrnamentalGemsList), "worth", (varEL * ((random.randint(1,6)) + random.randint(1,6))), "pence.")
+                print("You recieve a", random.choice(varOrnamentalGemsList), "worth", (varD6 * ((random.randint(1,6)) + random.randint(1,6))), "copper.")
                 if OrnNum >= 2:
-                        print("You recieve a", random.choice(varOrnamentalGemsList), "worth", (varEL * ((random.randint(1,6)) + random.randint(1,6))), "pence.")
+                        print("You recieve a", random.choice(varOrnamentalGemsList), "worth", (varD6 * ((random.randint(1,6)) + random.randint(1,4))), "copper.")
                 if OrnNum >= 3:
-                        print("You recieve a", random.choice(varOrnamentalGemsList), "worth", (varEL * ((random.randint(1,6)) + random.randint(1,6))), "pence.")
+                        print("You recieve a", random.choice(varOrnamentalGemsList), "worth", (varD6 * ((random.randint(1,6)) + random.randint(1,4))), "copper.")
                 if OrnNum >= 4:
-                        print("You recieve a", random.choice(varOrnamentalGemsList), "worth", (varEL * ((random.randint(1,6)) + random.randint(1,6))), "pence.")        
+                        print("You recieve a", random.choice(varOrnamentalGemsList), "worth", (varD6 * ((random.randint(1,6)) + random.randint(1,4))), "copper.")        
                 if OrnNum >= 5:
-                        print("You recieve a", random.choice(varOrnamentalGemsList), "worth", (varEL * ((random.randint(1,6)) + random.randint(1,6))), "pence.")
+                        print("You recieve a", random.choice(varOrnamentalGemsList), "worth", (varD6 * ((random.randint(1,6)) + random.randint(1,4))), "copper.")
                 if OrnNum >= 6:
-                        print("You recieve a", random.choice(varOrnamentalGemsList), "worth", (varEL * ((random.randint(1,6)) + random.randint(1,6))), "pence.")        
+                        print("You recieve a", random.choice(varOrnamentalGemsList), "worth", (varD6 * ((random.randint(1,6)) + random.randint(1,4))), "copper.")        
         
         #get semi precious gem
         if varGemsArt >= 22 and varGemsArt <= 26:
-                print("You recieve", random.choice(varSemipreciousGemsList), "worth", (varEL * ((random.randint(1,6)) + random.randint(1,6))), "copper.")
+                print("You recieve", random.choice(varSemipreciousGemsList), "worth", (varD8 * ((random.randint(1,6)) + random.randint(1,6))), "silver.")
                 if SemPrecNum >= 2:
-                        print("You recieve a", random.choice(varSemipreciousGemsList), "worth", (varEL * ((random.randint(1,6)) + random.randint(1,6))), "copper.")
+                        print("You recieve a", random.choice(varSemipreciousGemsList), "worth", (varD8 * ((random.randint(1,6)) + random.randint(1,6))), "silver.")
                 if SemPrecNum >= 3:
-                        print("You recieve a", random.choice(varSemipreciousGemsList), "worth", (varEL * ((random.randint(1,6)) + random.randint(1,6))), "copper.")
+                        print("You recieve a", random.choice(varSemipreciousGemsList), "worth", (varD8 * ((random.randint(1,6)) + random.randint(1,6))), "silver.")
                 if SemPrecNum >= 4:
-                        print("You recieve a", random.choice(varSemipreciousGemsList), "worth", (varEL * ((random.randint(1,6)) + random.randint(1,6))), "copper.")
+                        print("You recieve a", random.choice(varSemipreciousGemsList), "worth", (varD8 * ((random.randint(1,6)) + random.randint(1,6))), "silver.")
                 if SemPrecNum >= 5:
-                        print("You recieve a", random.choice(varSemipreciousGemsList), "worth", (varEL * ((random.randint(1,6)) + random.randint(1,6))), "copper.")
+                        print("You recieve a", random.choice(varSemipreciousGemsList), "worth", (varD8 * ((random.randint(1,6)) + random.randint(1,6))), "silver.")
                 if SemPrecNum >= 6:
-                        print("You recieve a", random.choice(varSemipreciousGemsList), "worth", (varEL * ((random.randint(1,6)) + random.randint(1,6))), "copper.")
+                        print("You recieve a", random.choice(varSemipreciousGemsList), "worth", (varD8 * ((random.randint(1,6)) + random.randint(1,6))), "silver.")
                         
         #get decorative art     
         if varGemsArt >= 27 and varGemsArt <= 31:
-                print("You recieve", (random.randint(1,3)), "piece(s) of decorative art worth", (random.randint(1,20)) * (varEL), "silver in total.")
+                print("You recieve", (random.randint(1,3)), "piece(s) of decorative art worth", (random.randint(1,20)) * (varD12), "silver in total.")
                 
         #get precious gems
         if varGemsArt >= 32 and varGemsArt <= 36:
-                print("You recieve", random.choice(varPreciousGemsList), "worth", (varEL * ((random.randint(1,4)) + random.randint(1,4))), "gold.")
+                print("You recieve", random.choice(varPreciousGemsList), "worth", (varD10 * ((random.randint(1,4)) + random.randint(1,4))), "gold.")
                 if SemPrecNum >= 2:
-                        print("You recieve a", random.choice(varPreciousGemsList), "worth", (varEL * ((random.randint(1,4)) + random.randint(1,4))), "gold.")
+                        print("You recieve a", random.choice(varPreciousGemsList), "worth", (varD10 * ((random.randint(1,4)) + random.randint(1,4))), "gold.")
                 if SemPrecNum >= 3:
-                        print("You recieve a", random.choice(varPreciousGemsList), "worth", (varEL * ((random.randint(1,4)) + random.randint(1,4))), "gold.")
+                        print("You recieve a", random.choice(varPreciousGemsList), "worth", (varD10 * ((random.randint(1,4)) + random.randint(1,4))), "gold.")
         
         #get fine art
         if varGemsArt >= 37:
-                print("You recieve an object of fine art worth", (random.randint(1,20) * (varEL)), "gold.")
+                print("You recieve an object of fine art worth", (random.randint(1,20) * (varD12)), "gold.")
 
         print("-----------------------------------")    
 
@@ -710,9 +719,11 @@ while True:
         #heading for big random stuff
         if varRandomStuffRolls < 1:
                 print("-----------------------------------")
+                print (" ")
                 print("You find no incidental items.")
         if varRandomStuffRolls > 0:
                 print("-----------------------------------")    
+                print("You also find... ")
                 
         #start big random stuff loop
         while varStuffSoFar < varRandomStuffRolls:
@@ -2191,6 +2202,8 @@ class LootzApp(tk.Tk):
     def __init__(self):
         super().__init__()
         self.title('Lootz GUI')
+        # widen the default window so long lines don't wrap as easily
+        self.geometry('1100x490')
 
         tk.Label(self, text='Encounter Level (1-30):').pack(pady=5)
         self.level_entry = tk.Entry(self)
@@ -2217,7 +2230,8 @@ class LootzApp(tk.Tk):
             parent = self.left_col if idx < half else self.right_col
             frame = tk.Frame(parent)
             tk.Label(frame, text=label).pack(anchor='w')
-            txt = scrolledtext.ScrolledText(frame, width=40, height=6)
+            # wider text boxes to better fit the enlarged window
+            txt = scrolledtext.ScrolledText(frame, width=60, height=6)
             txt.pack(fill=tk.BOTH, expand=True)
             parent.add(frame)
             self.section_widgets.append(txt)
