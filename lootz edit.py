@@ -23,8 +23,6 @@ import random
 while True:
 
                 
-        #print fancy line
-        print('=====================================')
         
         #print separator
         print("")
@@ -715,7 +713,6 @@ while True:
                 print("You find no incidental items.")
         if varRandomStuffRolls > 0:
                 print("-----------------------------------")    
-                print("You also find the following incidental item(s): ")
                 
         #start big random stuff loop
         while varStuffSoFar < varRandomStuffRolls:
@@ -2084,7 +2081,6 @@ while True:
                 varStuffSoFar = varStuffSoFar +2
                 
         print("")
-        print('=====================================')
         print("Hit enter for another set of loot.")
         print("")
         print("")
@@ -2098,8 +2094,7 @@ while True:
 
 
 
-def run_loot(level):␍␊
-def run_loot(level):␊
+def run_loot(level):
     """Run the embedded loot generator once and return its output."""
     with tempfile.NamedTemporaryFile('w', delete=False, suffix='.py') as tmp:
         tmp.write(CLI_SCRIPT)
@@ -2129,10 +2124,6 @@ def run_loot(level):␊
     if output.startswith(prompt):
         output = output[len(prompt):]
     return output
-    prompt = 'Encounter level? (1-30) '
-    if output.startswith(prompt):
-        output = output[len(prompt):]
-    return output
 
 
 def _extract_magic_item(output):
@@ -2152,45 +2143,121 @@ def run_magic_item(level, attempts=5):
     return item
 
 
+def _split_sections(text):
+    """Split raw loot output into its component sections."""
+    sections = [s.strip() for s in text.split('-----------------------------------')]
+    if not sections:
+        return sections
+
+    sections[0] = sections[0].replace('====================================', '').strip()
+    if sections[-1].endswith('Hit enter for another set of loot.'):
+        sections[-1] = sections[-1].split('Hit enter')[0]
+    sections[-1] = sections[-1].replace('====================================', '').strip()
+
+    # Move any herbal pouch section to the incidental items section
+    for idx, sec in enumerate(sections):
+        if 'pouch of herbal ingredients' in sec.lower():
+            herbal = sections.pop(idx)
+            if sections:
+                sections[-1] = f"{herbal}\n{sections[-1]}".strip()
+            else:
+                sections.append(herbal)
+            break
+
+    return sections
+
+
+def run_hoard(level, count=5):
+    """Generate multiple sets of loot for a treasure hoard."""
+    aggregated = [[] for _ in LootzApp.SECTION_LABELS]
+    for _ in range(count):
+        for idx, part in enumerate(_split_sections(run_loot(level))):
+            if idx < len(aggregated):
+                aggregated[idx].append(part)
+    return ['\n\n'.join(parts) for parts in aggregated]
+
+
 class LootzApp(tk.Tk):
+    """Simple Tkinter GUI for the loot generator."""
+
+    SECTION_LABELS = [
+        "Coins",
+        "Gems / Art",
+        "Consumables",
+        "Magic Items",
+        "Incidental Items",
+    ]
+
     def __init__(self):
         super().__init__()
         self.title('Lootz GUI')
+
         tk.Label(self, text='Encounter Level (1-30):').pack(pady=5)
         self.level_entry = tk.Entry(self)
         self.level_entry.pack(pady=5)
-        tk.Button(self, text='Generate Loot', command=self.generate).pack(pady=5)
-        self.output = scrolledtext.ScrolledText(self, width=80, height=30)
-        self.output.pack(pady=5)
-        self.level_entry = tk.Entry(self)
-        self.level_entry.pack(pady=5)
-        tk.Button(self, text='Generate Loot', command=self.generate).pack(pady=5)
-        tk.Button(self, text='Generate Magic Item', command=self.generate_magic).pack(pady=5)
-        self.output = scrolledtext.ScrolledText(self, width=80, height=30)
-        self.output.pack(pady=5)
+
+        btn_frame = tk.Frame(self)
+        btn_frame.pack(pady=5)
+        tk.Button(btn_frame, text='Generate Loot', command=self.generate).pack(side=tk.LEFT, padx=5)
+        tk.Button(btn_frame, text='Generate Magic Item', command=self.generate_magic).pack(side=tk.LEFT, padx=5)
+
+        tk.Button(btn_frame, text='Generate Hoard', command=self.generate_hoard).pack(side=tk.LEFT, padx=5)
+        # create two-column pane layout for the sections
+        self.paned = tk.PanedWindow(self, orient=tk.HORIZONTAL)
+        self.paned.pack(fill=tk.BOTH, expand=True)
+
+        self.left_col = tk.PanedWindow(self.paned, orient=tk.VERTICAL)
+        self.right_col = tk.PanedWindow(self.paned, orient=tk.VERTICAL)
+        self.paned.add(self.left_col)
+        self.paned.add(self.right_col)
+
+        self.section_widgets = []
+        half = (len(self.SECTION_LABELS) + 1) // 2
+        for idx, label in enumerate(self.SECTION_LABELS):
+            parent = self.left_col if idx < half else self.right_col
+            frame = tk.Frame(parent)
+            tk.Label(frame, text=label).pack(anchor='w')
+            txt = scrolledtext.ScrolledText(frame, width=40, height=6)
+            txt.pack(fill=tk.BOTH, expand=True)
+            parent.add(frame)
+            self.section_widgets.append(txt)
 
     def generate(self):
+        """Generate loot and populate each pane."""
         level = self.level_entry.get().strip()
         if not level:
             return
-        result = run_loot(level)
-        self.output.delete('1.0', tk.END)
-        self.output.insert(tk.END, result)
-    def generate(self):
+        sections = _split_sections(run_loot(level))
+
+        for idx, widget in enumerate(self.section_widgets):
+            widget.delete('1.0', tk.END)
+            if idx < len(sections):
+                widget.insert(tk.END, sections[idx])
+            else:
+                widget.insert(tk.END, '')
+
+    def generate_hoard(self):
+        """Generate multiple loot sets and display them."""
         level = self.level_entry.get().strip()
         if not level:
             return
-        result = run_loot(level)
-        self.output.delete('1.0', tk.END)
-        self.output.insert(tk.END, result)
+        sections = run_hoard(level)
+        for idx, widget in enumerate(self.section_widgets):
+            widget.delete("1.0", tk.END)
+            if idx < len(sections):
+                widget.insert(tk.END, sections[idx])
+            else:
+                widget.insert(tk.END, "")
 
     def generate_magic(self):
+        """Display a single magic item in the first pane."""
         level = self.level_entry.get().strip()
         if not level:
             return
         result = run_magic_item(level)
-        self.output.delete('1.0', tk.END)
-        self.output.insert(tk.END, result)
+        for widget in self.section_widgets:
+            widget.delete('1.0', tk.END)
+        self.section_widgets[0].insert(tk.END, result)
 
 if __name__ == '__main__':
     app = LootzApp()
