@@ -4,12 +4,7 @@ import os
 import tempfile
 import tkinter as tk
 from tkinter import scrolledtext
-try:
-    import openai  # optional dependency for art descriptions
-except ModuleNotFoundError:
-    openai = None
 
-openai.api_key = "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"
 
 # Embedded original loot generator script
 CLI_SCRIPT = '''
@@ -129,11 +124,11 @@ while True:
                 
         #get precious gems
         if varGemsArt >= 32 and varGemsArt <= 36:
-                print("You recieve", random.choice(varPreciousGemsList), "worth", (varD10 * ((random.randint(1,4)) + random.randint(1,4))), "gold.")
+                print("You recieve", random.choice(varPreciousGemsList), "worth", (varD6 * ((random.randint(1,4)) + random.randint(1,4))), "gold.")
                 if SemPrecNum >= 2:
-                        print("You recieve a", random.choice(varPreciousGemsList), "worth", (varD10 * ((random.randint(1,4)) + random.randint(1,4))), "gold.")
+                        print("You recieve a", random.choice(varPreciousGemsList), "worth", (varD6 * ((random.randint(1,4)) + random.randint(1,4))), "gold.")
                 if SemPrecNum >= 3:
-                        print("You recieve a", random.choice(varPreciousGemsList), "worth", (varD10 * ((random.randint(1,4)) + random.randint(1,4))), "gold.")
+                        print("You recieve a", random.choice(varPreciousGemsList), "worth", (varD6 * ((random.randint(1,4)) + random.randint(1,4))), "gold.")
         
         #get fine art
         if varGemsArt >= 37:
@@ -331,13 +326,11 @@ while True:
                         'Glassteel', 'Ironwood', 'Mithral', 'Orichalcon', 'Mithral', 'Orichalcon', 'Sky Iron', 'Sky Iron', 'Spiderweave', 'Sylvanweave', 
                         'Warpstone', 'Wyldskin/Wyldfang', 'a Unique Material', 'Wyldskin/Wyldfang', 'a Unique Material', 'Wyldskin/Wyldfang', 'a Unique Material']      
                         
-        varDivineList = ['Aiyr, the Hidden Rune', 'Castia, the Wild Hunt', 'Draugh, the Black Thorn', 'Ision, the Crimson Fane', 
-                        'Nym, the Untamed Tempest', 'Roelyd, the White Ram', 'Ur, the Fallen', 'Ylle, the Crawling Chaos', 'The Kingsroad', 
-                        'The Way of Flame', 'Aiyr, the Hidden Rune', 'Castia, the Wild Hunt', 'Draugh, the Black Thorn', 'Ision, the Crimson Fane', 
-                        'Nym, the Untamed Tempest', 'Roelyd, the White Ram', 'Ur, the Fallen', 'Ylle, the Crawling Chaos', 'The Kingsroad', 
-                        'The Way of Flame', 'Aiyr, the Hidden Rune', 'Castia, the Wild Hunt', 'Draugh, the Black Thorn', 'Ision, the Crimson Fane', 
-                        'Nym, the Untamed Tempest', 'Roelyd, the White Ram', 'Ur, the Fallen', 'Ylle, the Crawling Chaos', 'The Kingsroad', 
-                        'The Way of Flame', 'A Forgotten God or Cult', 'A Forgotten God or Cult', 'A Forgotten God or Cult', 'The Void']
+        varDivineList = ['Artifice', 'Autumn', 'Beast', 'Blood', 'Celerity', 'Chaos', 'Civilization', 'Darkness', 'Death', 'Depths', 'Destruction', 'Diablerie', 
+                        'Dragons', 'Dream', 'Evil', 'Fate', 'Flame', 'Good', 'Greed', 'Healing', 'Hearth', 'Hunting', 'Hypogea', 'Illusion', 'Knowledge', 'Law', 
+                        'Madness', 'Magic', 'Metal', 'Moon', 'Mutation', 'Nature', 'Pain', 'Pestilence', 'Protection', 'Purification', 'Sand', 'Saurian', 'Spring', 
+                        'Starvation', 'Stone', 'Strength', 'Storms', 'Summer', 'Sunlight', 'Temptation', 'Time', 'Trade', 'Travel', 'Trickery', 'Tyranny', 'Vengeance', 
+                        'Venom', 'War', 'Water', 'Winter', 'Wrath', 'A Forgotten God or Cult', 'A Forgotten God or Cult', 'A Forgotten God or Cult', 'The Void']
 
         #alchemical concoctions list                    
         varMinorAlchemical = ['Oil of Iron Silence', 'Oil of Minor Banes', 'Oil of Minor Striking', 'Oil of Magestrike', 'Dose of Carrion Crawler Brain Juice',
@@ -586,7 +579,7 @@ while True:
                         print("You recieve a", varMagicQuality, "rank magical talisman, a", varMagicItemType, "of")
                         print(varMagicItemOrigin, "make.")
                         if varMagicItemType == 'Holy Symbol':
-                                print("   This Holy Symbol is dedicated to", random.choice(varDivineList), ".")
+                                print("   This Holy Symbol is dedicated to", random.choice(varDivineList),".")
                                 
                 #magic ring
                 if varMagicItemTypeRoll == 11 or varMagicItemTypeRoll == 12:
@@ -2110,45 +2103,6 @@ while True:
 '''
 
 
-def generate_art_description():
-    """Fetch a random fantasy art object description using ChatGPT."""
-    if openai is None:
-        raise RuntimeError("openai package is not installed")
-
-    # Load API key from environment variable
-    api_key = os.getenv("OPENAI_API_KEY")
-    if not api_key:
-        raise RuntimeError("OPENAI_API_KEY environment variable not set")
-    openai.api_key = api_key
-
-    prompt = (
-        "Give me a short description of a random piece of decorative or fine art "
-        "that might appear in a treasure hoard. Keep it under 60 words."
-    )
-
-    try:
-        response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",
-            messages=[{"role": "user", "content": prompt}],
-            max_tokens=100,
-            temperature=0.8
-        )
-        message = response.get("choices", [{}])[0].get("message", {}).get("content", "")
-        return message.strip()
-    except Exception as e:
-        return "Error fetching art description: {}".format(e)
-
-
-def _maybe_add_art_description(section):
-    lowered = section.lower()
-    if "decorative art" in lowered or "fine art" in lowered:
-        try:
-            description = generate_art_description()
-            section = f"{section}\n{description}"
-        except Exception as exc:
-            section = f"{section}\n(Art description unavailable: {exc})"
-    return section
-
 
 def run_loot(level):
     """Run the embedded loot generator once and return its output."""
@@ -2220,9 +2174,6 @@ def _split_sections(text):
                 sections.append(herbal)
             break
 
-    if len(sections) > 1:
-        sections[1] = _maybe_add_art_description(sections[1])
-
     return sections
 
 
@@ -2284,19 +2235,7 @@ class LootzApp(tk.Tk):
             parent.add(frame)
             self.section_widgets.append(txt)
 
-    def generate(self):
-        """Generate loot and populate each pane."""
-        level = self.level_entry.get().strip()
-        if not level:
-            return
-        sections = _split_sections(run_loot(level))
 
-        for idx, widget in enumerate(self.section_widgets):
-            widget.delete('1.0', tk.END)
-            if idx < len(sections):
-                widget.insert(tk.END, sections[idx])
-            else:
-                widget.insert(tk.END, '')
 
     def generate_hoard(self):
         """Generate multiple loot sets and display them."""
