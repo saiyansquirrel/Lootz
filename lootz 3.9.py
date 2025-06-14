@@ -354,13 +354,15 @@ while True:
                         'Moderate Healing Draught (6d6)', 'Moderate Healing Draught (6d6)', 'Moderate Mana Draught', 'Moderate Mana Draught', 
                         'Shadowsoul Elixir', 'Moderate Trollflesh Elixir']
         
-        varHerbalism = ['acantha', 'adamantine dust', 'ash wood shavings', 'athril', 'ayana', 'black cohosh', 'black lotus', 'black tea', 
-                        'blackwood sap', 'bloodcrown', 'bloodthistle', 'briarthorn', 'brimstone', 'cinnabar', 'cockatrice teeth', 'devil grass', 
-                        'dragonleaf', 'dreamthorn', 'elderberry', 'fadewhisker', 'felbloom', 'feverfew', 'fire lichen', 'firevine', 'fjaleaf', 'fools cap', 
-                        'foxglove', 'frostcap', 'ghost moss', 'glownettle', 'gravethorn', 'green tea', 'greymold', 'hemlock', 'holy water', 'honey', 
-                        'iron filings', 'ironwood sap', 'jasmine', 'kave', 'kingsblood', 'kohl', 'lunas rose', 'magethistle', 'mana clover', 'mandrake', 
-                        'nornsblood', 'phosphorus', 'rain poppy', 'riverbite', 'rosethorn', 'saltmoss', 'seraline', 'silkweed', 'silversage', 'sirens kiss', 
-                        'slimescale', 'snow lily', 'snow poppy', 'steelbloom', 'suns bell', 'tiger lily', 'torchflower', 'valerian', 'vervain', 'whiteveil', 'wolvesbane']
+        varHerbalism = ['acantha (d)', 'adamantine dust (s)', 'ash wood shavings (a)', 'athril (c)', 'ayana (b)', 'black cohosh (b)', 'black lotus (f)', 'black tea (f)', 
+                        'blackwood sap (a)', 'bloodcrown (s)', 'bloodthistle (d)', 'briarthorn (a)', 'brimstone (b)', 'cinnabar (b)', 'cockatrice teeth (a)', 'devil grass (b)', 
+                        'dragonleaf (a)', 'dreamthorn (a)', 'elderberry (a)', 'fadewhisker (b)', 'felbloom (a)', 'feverfew (c)', 'fire lichen (a)', 'firevine (a)', 'fjaleaf (c)', 'fools cap (f)', 
+                        'foxglove (c)', 'frostcap (b)', 'ghost moss (b)', 'glownettle (b)', 'gravethorn (a)', 'green tea (b)', 'greymold (c)', 'hemlock (b)', 'holy water (b)', 'honey (c)', 
+                        'iron filings (f)', 'ironwood sap (a)', 'jasmine (c)', 'kave (d)', 'kingsblood (s)', 'kohl (d)', 'lunas rose (f)', 'magethistle (s)', 'mana clover (s)', 'mandrake (c)', 
+                        'nornsblood (a)', 'phosphorus (b)', 'rain poppy (c)', 'riverbite (a)', 'rosethorn (b)', 'saltmoss (d)', 'seraline (c)', 'silkweed (a)', 'silversage (d)', 'sirens kiss (c)', 
+                        'slimescale (b)', 'snow lily (a)', 'snow poppy (b)', 'steelbloom (a)', 'suns bell (d)', 'tiger lily (c)', 'torchflower (b)', 'valerian (c)', 'vervain (b)', 'whiteveil (f)', 
+                        'wolvesbane (b)', 'ashgrasp (c)', 'moonlace (f)', 'hollowroot (d)', 'brightsting (b)', 'cradlevine (d)', 'veilthorn (c)', 'foxmirror (f)', 'shivershade (c)', 'gloamroot (d)',
+                        'skybane bloom (b)', 'thornmothers hair (c)', 'dreamleek (f)', 'mirewhistle (d)', 'rooks tongue (b)', 'ghoulmoss (a)', 'gravemint (d)', 'everslick (c)', 'windwhorl (b)']
         
         #alchemical bits
         varHerbalismGet = (random.randint(1,20))
@@ -368,7 +370,7 @@ while True:
         if varHerbalismGet >= 15:
                 print("You find a pouch of herbal ingredients containing:")
                 while varHerbalismStuff >= 0:
-                        print("  ", random.choice(varHerbalism), "worth", (varEL * ((random.randint(1,10)) + (random.randint(1,10))) // random.randint(1,9)), "silver.")
+                        print("  ", random.choice(varHerbalism), "worth", (varEL * ((random.randint(1,10)) + (random.randint(1,10))) // random.randint(1,20)), "silver.")
                         varHerbalismStuff = (varHerbalismStuff - 1)
                 print("  ")
                 print("-----------------------------------")    
@@ -744,7 +746,7 @@ while True:
                 varD00=(random.randint(1,100))
                 
 #FIX THIS FUCKING LINE WITH THE CORRECT NUMBER - this has been fixed
-                varBRSRoll=(random.randint(1,1000))
+                varBRSRoll=(random.randint(1,900))
                 
                 if varBRSRoll == 1:
                         print("  ", varD20, "pints of lamp oil.")
@@ -2086,8 +2088,8 @@ while True:
                         print("   A filled waterskin in", random.choice(varConditionList), "condition.") 
                 if varBRSRoll >= 866 and varBRSRoll <= 880:
                         print("   A bedroll in", random.choice(varConditionList), "condition.")
-                if varBRSRoll >= 881 and varBRSRoll <= 1000:
-                        print("  ", varD4, "ounce(s) of", random.choice(varHerbalism), "in", random.choice(varConditionList), "condition.")
+                if varBRSRoll >= 881 and varBRSRoll <= 900:
+                        print("  ", varD10, "ounce(s) of spices in", random.choice(varConditionList), "condition. Superior - 1pp/oz. Fine - 1gp/oz. Good - 1sp/oz. Average - 1cp/oz. Poor - 1pc/oz.")
 
                         #increase stuffsofar so the loop ends eventually        
                 varStuffSoFar = varStuffSoFar +2
@@ -2198,7 +2200,7 @@ class LootzApp(tk.Tk):
         super().__init__()
         self.title("Lootz GUI")
         # widen the default window so long lines don't wrap as easily
-        self.geometry("550x550")
+        self.geometry("600x550")
 
         tk.Label(self, text="Encounter Level (1-30):").pack(pady=5)
         self.level_entry = tk.Entry(self)
