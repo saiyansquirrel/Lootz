@@ -2105,16 +2105,19 @@ while True:
 '''
 
 
-
 def run_loot(level):
     """Run the embedded loot generator once and return its output."""
-    with tempfile.NamedTemporaryFile('w', delete=False, suffix='.py') as tmp:
+    with tempfile.NamedTemporaryFile("w", delete=False, suffix=".py") as tmp:
         tmp.write(CLI_SCRIPT)
         tmp_path = tmp.name
     try:
-        proc = subprocess.Popen([
-            sys.executable, tmp_path
-        ], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
+        proc = subprocess.Popen(
+            [sys.executable, tmp_path],
+            stdin=subprocess.PIPE,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            text=True,
+        )
         proc.stdin.write(f"{level}\n")
         proc.stdin.flush()
 
@@ -2124,57 +2127,51 @@ def run_loot(level):
             if not line:
                 break
             lines.append(line)
-            if 'Hit enter for another set of loot.' in line:
+            if "Hit enter for another set of loot." in line:
                 proc.kill()
                 break
         proc.communicate()
     finally:
         os.unlink(tmp_path)
 
-    output = ''.join(lines)
-    prompt = 'Encounter level? (1-30) '
+    output = "".join(lines)
+    prompt = "Encounter level? (1-30) "
     if output.startswith(prompt):
-        output = output[len(prompt):]
+        output = output[len(prompt) :]
     return output
 
 
 def _extract_magic_item(output):
-    parts = output.split('-----------------------------------')
+    parts = output.split("-----------------------------------")
     if len(parts) >= 4:
-        return parts[3].strip() or 'No magic item generated.'
-    return 'No magic item generated.'
+        return parts[3].strip() or "No magic item generated."
+    return "No magic item generated."
 
 
 def run_magic_item(level, attempts=5):
     """Return a magic item for the given level, retrying if none found."""
-    item = 'No magic item generated.'
+    item = "No magic item generated."
     for _ in range(attempts):
         item = _extract_magic_item(run_loot(level))
-        if 'no magic item' not in item.lower():
+        if "no magic item" not in item.lower():
             break
     return item
 
 
 def _split_sections(text):
     """Split raw loot output into its component sections."""
-    sections = [s.strip() for s in text.split('-----------------------------------')]
+    sections = [s.strip() for s in text.split("-----------------------------------")]
     if not sections:
         return sections
 
-    sections[0] = sections[0].replace('====================================', '').strip()
-    if sections[-1].endswith('Hit enter for another set of loot.'):
-        sections[-1] = sections[-1].split('Hit enter')[0]
-    sections[-1] = sections[-1].replace('====================================', '').strip()
-
-    # Move any herbal pouch section to the incidental items section
-    for idx, sec in enumerate(sections):
-        if 'pouch of herbal ingredients' in sec.lower():
-            herbal = sections.pop(idx)
-            if sections:
-                sections[-1] = f"{herbal}\n{sections[-1]}".strip()
-            else:
-                sections.append(herbal)
-            break
+    sections[0] = (
+        sections[0].replace("====================================", "").strip()
+    )
+    if sections[-1].endswith("Hit enter for another set of loot."):
+        sections[-1] = sections[-1].split("Hit enter")[0]
+    sections[-1] = (
+        sections[-1].replace("====================================", "").strip()
+    )
 
     return sections
 
@@ -2199,19 +2196,25 @@ class LootzApp(tk.Tk):
 
     def __init__(self):
         super().__init__()
-        self.title('Lootz GUI')
+        self.title("Lootz GUI")
         # widen the default window so long lines don't wrap as easily
-        self.geometry('550x550')
+        self.geometry("550x550")
 
-        tk.Label(self, text='Encounter Level (1-30):').pack(pady=5)
+        tk.Label(self, text="Encounter Level (1-30):").pack(pady=5)
         self.level_entry = tk.Entry(self)
         self.level_entry.pack(pady=5)
 
         btn_frame = tk.Frame(self)
         btn_frame.pack(pady=5)
-        tk.Button(btn_frame, text='Generate Loot', command=self.generate).pack(side=tk.LEFT, padx=5)
-        tk.Button(btn_frame, text='Generate Magic Item', command=self.generate_magic).pack(side=tk.LEFT, padx=5)
-        tk.Button(btn_frame, text='Generate Hoard', command=self.generate_hoard).pack(side=tk.LEFT, padx=5)
+        tk.Button(btn_frame, text="Generate Loot", command=self.generate).pack(
+            side=tk.LEFT, padx=5
+        )
+        tk.Button(
+            btn_frame, text="Generate Magic Item", command=self.generate_magic
+        ).pack(side=tk.LEFT, padx=5)
+        tk.Button(btn_frame, text="Generate Hoard", command=self.generate_hoard).pack(
+            side=tk.LEFT, padx=5
+        )
 
         self.output_widget = scrolledtext.ScrolledText(self, width=120, height=25)
         self.output_widget.pack(fill=tk.BOTH, expand=True)
@@ -2224,8 +2227,6 @@ class LootzApp(tk.Tk):
         result = format_sections(run_loot(level))
         self.output_widget.delete("1.0", tk.END)
         self.output_widget.insert(tk.END, result)
-
-
 
     def generate_hoard(self):
         """Generate multiple loot sets and display them."""
@@ -2242,9 +2243,10 @@ class LootzApp(tk.Tk):
         if not level:
             return
         result = run_magic_item(level)
-        self.output_widget.delete('1.0', tk.END)
+        self.output_widget.delete("1.0", tk.END)
         self.output_widget.insert(tk.END, result)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     app = LootzApp()
     app.mainloop()
