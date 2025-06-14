@@ -32,24 +32,24 @@ while True:
         #ROLL FOR common coins
         varCommonCoins=(random.randint(1,20)) + (varEL)
         if varCommonCoins <= 7:
-                print("You recieve no common coins.")
+                print("You receive no common coins.")
         if varCommonCoins >= 8 and varCommonCoins <= 14:
-                print("You recieve", (varEL * (random.randint(1,6))) * (random.randint(1,6)), "bits and", (random.randint(1,6)), "pence.")
+                print("You receive", (varEL * (random.randint(1,6))) * (random.randint(1,6)), "bits and", (random.randint(1,6)), "pence.")
         if varCommonCoins >= 15 and varCommonCoins <= 19:
-                print("You recieve", (varEL * (random.randint(1,6))) * (random.randint(1,6)), "pence and", (random.randint(1,6)), "bits.")
+                print("You receive", (varEL * (random.randint(1,6))) * (random.randint(1,6)), "pence and", (random.randint(1,6)), "bits.")
         if varCommonCoins >= 20:
-                print("You recieve", (varEL * (random.randint(1,6))) * (random.randint(1,6)), "copper and", (random.randint(1,6)), "pence.")
+                print("You receive", (varEL * (random.randint(1,6))) * (random.randint(1,6)), "copper and", (random.randint(1,6)), "pence.")
 
         #ROLL FOR rare coins
         varRareCoins=(random.randint(1,20)) + (varEL)
         if varRareCoins <=13:
                 print("You receive no rare coins.")
         if varRareCoins >= 14 and varRareCoins <= 20:
-                print("You recieve", (varEL * (random.randint(1,6))) * ((random.randint(1,6))+(random.randint(1,6))), "copper and", (random.randint(1,8)), "pence.")
+                print("You receive", (varEL * (random.randint(1,6))) * ((random.randint(1,6))+(random.randint(1,6))), "copper and", (random.randint(1,8)), "pence.")
         if varRareCoins >= 21 and varRareCoins <= 29:
-                print("You recieve", (varEL * (random.randint(1,6))) * (random.randint(1,6)), "silver and", (random.randint(1,6)), "copper.")
+                print("You receive", (varEL * (random.randint(1,6))) * (random.randint(1,6)), "silver and", (random.randint(1,6)), "copper.")
         if varRareCoins >= 30 and varRareCoins <= 35:
-                print("You recieve", (varEL * (random.randint (1,6))) * (random.randint(1,4)), "gold and", (random.randint(1,8)), "silver.")
+                print("You receive", (varEL * (random.randint (1,6))) * (random.randint(1,4)), "gold and", (random.randint(1,8)), "silver.")
         if varRareCoins >= 36:
                 print("You receive", (varEL * (random.randint(1,6))) * (random.randint(1,3)), "platinum and", (random.randint(1,10)), "gold.")
         
@@ -88,51 +88,51 @@ while True:
 
         #no gems, get rekt scrub
         if varGemsArt <= 16:
-                print("You recieve no gems or art objects.")
+                print("You receive no gems or art objects.")
         
         #get for ornamental gems
         if varGemsArt >= 17 and varGemsArt <= 21:
-                print("You recieve a", random.choice(varOrnamentalGemsList), "worth", (varD6 * ((random.randint(1,6)) + random.randint(1,6))), "copper.")
+                print("You receive a", random.choice(varOrnamentalGemsList), "worth", (varD6 * ((random.randint(1,6)) + random.randint(1,6))), "copper.")
                 if OrnNum >= 2:
-                        print("You recieve a", random.choice(varOrnamentalGemsList), "worth", (varD6 * ((random.randint(1,6)) + random.randint(1,4))), "copper.")
+                        print("You receive a", random.choice(varOrnamentalGemsList), "worth", (varD6 * ((random.randint(1,6)) + random.randint(1,4))), "copper.")
                 if OrnNum >= 3:
-                        print("You recieve a", random.choice(varOrnamentalGemsList), "worth", (varD6 * ((random.randint(1,6)) + random.randint(1,4))), "copper.")
+                        print("You receive a", random.choice(varOrnamentalGemsList), "worth", (varD6 * ((random.randint(1,6)) + random.randint(1,4))), "copper.")
                 if OrnNum >= 4:
-                        print("You recieve a", random.choice(varOrnamentalGemsList), "worth", (varD6 * ((random.randint(1,6)) + random.randint(1,4))), "copper.")        
+                        print("You receive a", random.choice(varOrnamentalGemsList), "worth", (varD6 * ((random.randint(1,6)) + random.randint(1,4))), "copper.")        
                 if OrnNum >= 5:
-                        print("You recieve a", random.choice(varOrnamentalGemsList), "worth", (varD6 * ((random.randint(1,6)) + random.randint(1,4))), "copper.")
+                        print("You receive a", random.choice(varOrnamentalGemsList), "worth", (varD6 * ((random.randint(1,6)) + random.randint(1,4))), "copper.")
                 if OrnNum >= 6:
-                        print("You recieve a", random.choice(varOrnamentalGemsList), "worth", (varD6 * ((random.randint(1,6)) + random.randint(1,4))), "copper.")        
+                        print("You receive a", random.choice(varOrnamentalGemsList), "worth", (varD6 * ((random.randint(1,6)) + random.randint(1,4))), "copper.")        
         
         #get semi precious gem
         if varGemsArt >= 22 and varGemsArt <= 26:
-                print("You recieve", random.choice(varSemipreciousGemsList), "worth", (varD8 * ((random.randint(1,6)) + random.randint(1,6))), "silver.")
+                print("You receive", random.choice(varSemipreciousGemsList), "worth", (varD8 * ((random.randint(1,6)) + random.randint(1,6))), "silver.")
                 if SemPrecNum >= 2:
-                        print("You recieve a", random.choice(varSemipreciousGemsList), "worth", (varD8 * ((random.randint(1,6)) + random.randint(1,6))), "silver.")
+                        print("You receive a", random.choice(varSemipreciousGemsList), "worth", (varD8 * ((random.randint(1,6)) + random.randint(1,6))), "silver.")
                 if SemPrecNum >= 3:
-                        print("You recieve a", random.choice(varSemipreciousGemsList), "worth", (varD8 * ((random.randint(1,6)) + random.randint(1,6))), "silver.")
+                        print("You receive a", random.choice(varSemipreciousGemsList), "worth", (varD8 * ((random.randint(1,6)) + random.randint(1,6))), "silver.")
                 if SemPrecNum >= 4:
-                        print("You recieve a", random.choice(varSemipreciousGemsList), "worth", (varD8 * ((random.randint(1,6)) + random.randint(1,6))), "silver.")
+                        print("You receive a", random.choice(varSemipreciousGemsList), "worth", (varD8 * ((random.randint(1,6)) + random.randint(1,6))), "silver.")
                 if SemPrecNum >= 5:
-                        print("You recieve a", random.choice(varSemipreciousGemsList), "worth", (varD8 * ((random.randint(1,6)) + random.randint(1,6))), "silver.")
+                        print("You receive a", random.choice(varSemipreciousGemsList), "worth", (varD8 * ((random.randint(1,6)) + random.randint(1,6))), "silver.")
                 if SemPrecNum >= 6:
-                        print("You recieve a", random.choice(varSemipreciousGemsList), "worth", (varD8 * ((random.randint(1,6)) + random.randint(1,6))), "silver.")
+                        print("You receive a", random.choice(varSemipreciousGemsList), "worth", (varD8 * ((random.randint(1,6)) + random.randint(1,6))), "silver.")
                         
         #get decorative art     
         if varGemsArt >= 27 and varGemsArt <= 31:
-                print("You recieve", (random.randint(1,3)), "piece(s) of decorative art worth", (random.randint(1,20)) * (varD12), "silver in total.")
+                print("You receive", (random.randint(1,3)), "piece(s) of decorative art worth", (random.randint(1,20)) * (varD12), "silver in total.")
                 
         #get precious gems
         if varGemsArt >= 32 and varGemsArt <= 36:
-                print("You recieve", random.choice(varPreciousGemsList), "worth", (varD6 * ((random.randint(1,4)) + random.randint(1,4))), "gold.")
+                print("You receive", random.choice(varPreciousGemsList), "worth", (varD6 * ((random.randint(1,4)) + random.randint(1,4))), "gold.")
                 if SemPrecNum >= 2:
-                        print("You recieve a", random.choice(varPreciousGemsList), "worth", (varD6 * ((random.randint(1,4)) + random.randint(1,4))), "gold.")
+                        print("You receive a", random.choice(varPreciousGemsList), "worth", (varD6 * ((random.randint(1,4)) + random.randint(1,4))), "gold.")
                 if SemPrecNum >= 3:
-                        print("You recieve a", random.choice(varPreciousGemsList), "worth", (varD6 * ((random.randint(1,4)) + random.randint(1,4))), "gold.")
+                        print("You receive a", random.choice(varPreciousGemsList), "worth", (varD6 * ((random.randint(1,4)) + random.randint(1,4))), "gold.")
         
         #get fine art
         if varGemsArt >= 37:
-                print("You recieve an object of fine art worth", (random.randint(1,20) * (varD12)), "gold.")
+                print("You receive an object of fine art worth", (random.randint(1,20) * (varD12)), "gold.")
 
         print("-----------------------------------")    
 
@@ -368,8 +368,9 @@ while True:
         if varHerbalismGet >= 15:
                 print("You find a pouch of herbal ingredients containing:")
                 while varHerbalismStuff >= 0:
-                        print("  ", random.choice(varHerbalism))
+                        print("  ", random.choice(varHerbalism), "worth", (varEL * ((random.randint(1,10)) + (random.randint(1,10))) // random.randint(1,9)), "silver.")
                         varHerbalismStuff = (varHerbalismStuff - 1)
+                print("  ")
                 print("-----------------------------------")    
         
         
@@ -377,7 +378,7 @@ while True:
         varConsumables=(random.randint(1,20)) + (varEL)
         
         if varConsumables <= 17:
-                print("You recieve no consumables.")
+                print("You receive no consumables.")
                 
         if varConsumables >= 18 and varConsumables <= 29:
                 varConsumablesGet=(random.randint(1,3))
@@ -387,39 +388,39 @@ while True:
                         if varConsumablesType <= 7:
                                 varAlchemicalQuality=(random.randint(1,20))
                                 if varAlchemicalQuality <= 15:
-                                        print("You recieve a(n)", random.choice(varMinorAlchemical))
+                                        print("You receive a(n)", random.choice(varMinorAlchemical))
                                 if varAlchemicalQuality >= 16 and varAlchemicalQuality <= 19:
-                                        print("You recieve a(n)", random.choice(varLesserAlchemical))
+                                        print("You receive a(n)", random.choice(varLesserAlchemical))
                                 if varAlchemicalQuality == 20:
-                                        print("You recieve a(n)", random.choice(varModerateAlchemical))
+                                        print("You receive a(n)", random.choice(varModerateAlchemical))
                         if varConsumablesType >=8 and varConsumablesType <= 13:
                                 varPotionLevel=(random.randint(1,20))
                                 if varPotionLevel <= 15:
-                                        print("You recieve a Potion of", random.choice(varFirstLevelPotions))
+                                        print("You receive a Potion of", random.choice(varFirstLevelPotions))
                                 if varPotionLevel >= 16 and varPotionLevel <= 19:
-                                        print("You recieve a Potion of", random.choice(varSecondLevelPotions))
+                                        print("You receive a Potion of", random.choice(varSecondLevelPotions))
                                 if varPotionLevel == 20:
-                                        print("You have recieved a Potion of", random.choice(varThirdLevelPotions))
+                                        print("You have received a Potion of", random.choice(varThirdLevelPotions))
                         if varConsumablesType >= 14:
                                 varScrollLevel=(random.randint(1,20)) + (varEL)
                                 if varScrollLevel >= 1 and varScrollLevel <=10:
-                                        print("You recieve a Scroll of", random.choice(varFirstLevelSpells))
+                                        print("You receive a Scroll of", random.choice(varFirstLevelSpells))
                                 if varScrollLevel >= 11 and varScrollLevel <=15:
-                                        print("You recieve a Scroll of", random.choice(varSecondLevelSpells))                                   
+                                        print("You receive a Scroll of", random.choice(varSecondLevelSpells))                                   
                                 if varScrollLevel >= 16 and varScrollLevel <=20:
-                                        print("You recieve a Scroll of", random.choice(varThirdLevelSpells))
+                                        print("You receive a Scroll of", random.choice(varThirdLevelSpells))
                                 if varScrollLevel >= 21 and varScrollLevel <=25:
-                                        print("You recieve a Scroll of", random.choice(varFourthLevelSpells))  
+                                        print("You receive a Scroll of", random.choice(varFourthLevelSpells))  
                                 if varScrollLevel >= 26 and varScrollLevel <=30:
-                                        print("You recieve a Scroll of", random.choice(varFifthLevelSpells))            
+                                        print("You receive a Scroll of", random.choice(varFifthLevelSpells))            
                                 if varScrollLevel >= 31 and varScrollLevel <=32:
-                                        print("You recieve a Scroll of", random.choice(varSixthLevelSpells))
+                                        print("You receive a Scroll of", random.choice(varSixthLevelSpells))
                                 if varScrollLevel >= 33 and varScrollLevel <=34:
-                                        print("You recieve a Scroll of", random.choice(varSeventhLevelSpells))                                  
+                                        print("You receive a Scroll of", random.choice(varSeventhLevelSpells))                                  
                                 if varScrollLevel >= 35 and varScrollLevel <=36:
-                                        print("You recieve a Scroll of", random.choice(varEighthLevelSpells))
+                                        print("You receive a Scroll of", random.choice(varEighthLevelSpells))
                                 if varScrollLevel >= 37 and varScrollLevel <=40:
-                                        print("You recieve a Scroll of", random.choice(varNinthLevelSpells))
+                                        print("You receive a Scroll of", random.choice(varNinthLevelSpells))
                         varConsumablesSoFar = varConsumablesSoFar +1
                         
         if varConsumables >= 30:
@@ -430,46 +431,46 @@ while True:
                         if varConsumablesType <= 7:
                                 varAlchemicalQuality=(random.randint(1,20))
                                 if varAlchemicalQuality <= 15:
-                                        print("You recieve a(n)", random.choice(varMinorAlchemical))
+                                        print("You receive a(n)", random.choice(varMinorAlchemical))
                                 if varAlchemicalQuality >= 16 and varAlchemicalQuality <= 19:
-                                        print("You recieve a(n)", random.choice(varLesserAlchemical))
+                                        print("You receive a(n)", random.choice(varLesserAlchemical))
                                 if varAlchemicalQuality == 20:
-                                        print("You recieve a(n)", random.choice(varModerateAlchemical))
+                                        print("You receive a(n)", random.choice(varModerateAlchemical))
                         if varConsumablesType >=8 and varConsumablesType <= 13:
                                 varPotionLevel=(random.randint(1,20))
                                 if varPotionLevel <= 15:
-                                        print("You recieve a Potion of", random.choice(varFirstLevelPotions))
+                                        print("You receive a Potion of", random.choice(varFirstLevelPotions))
                                 if varPotionLevel >= 16 and varPotionLevel <= 19:
-                                        print("You recieve a Potion of", random.choice(varSecondLevelPotions))
+                                        print("You receive a Potion of", random.choice(varSecondLevelPotions))
                                 if varPotionLevel == 20:
-                                        print("You recieve a Potion of", random.choice(varThirdLevelPotions))
+                                        print("You receive a Potion of", random.choice(varThirdLevelPotions))
                         if varConsumablesType >= 14:
                                 varScrollLevel=(random.randint(1,20)) + (varEL)
                                 if varScrollLevel >= 1 and varScrollLevel <=10:
-                                        print("You recieve a Scroll of", random.choice(varFirstLevelSpells))
+                                        print("You receive a Scroll of", random.choice(varFirstLevelSpells))
                                 if varScrollLevel >= 11 and varScrollLevel <=15:
-                                        print("You recieve a Scroll of", random.choice(varSecondLevelSpells))                                   
+                                        print("You receive a Scroll of", random.choice(varSecondLevelSpells))                                   
                                 if varScrollLevel >= 16 and varScrollLevel <=20:
-                                        print("You recieve a Scroll of", random.choice(varThirdLevelSpells))
+                                        print("You receive a Scroll of", random.choice(varThirdLevelSpells))
                                 if varScrollLevel >= 21 and varScrollLevel <=25:
-                                        print("You recieve a Scroll of", random.choice(varFourthLevelSpells))  
+                                        print("You receive a Scroll of", random.choice(varFourthLevelSpells))  
                                 if varScrollLevel >= 26 and varScrollLevel <=30:
-                                        print("You recieve a Scroll of", random.choice(varFifthLevelSpells))            
+                                        print("You receive a Scroll of", random.choice(varFifthLevelSpells))            
                                 if varScrollLevel >= 31 and varScrollLevel <=32:
-                                        print("You recieve a Scroll of", random.choice(varSixthLevelSpells))
+                                        print("You receive a Scroll of", random.choice(varSixthLevelSpells))
                                 if varScrollLevel >= 33 and varScrollLevel <=34:
-                                        print("You recieve a Scroll of", random.choice(varSeventhLevelSpells))                                  
+                                        print("You receive a Scroll of", random.choice(varSeventhLevelSpells))                                  
                                 if varScrollLevel >= 35 and varScrollLevel <=36:
-                                        print("You recieve a Scroll of", random.choice(varEighthLevelSpells))
+                                        print("You receive a Scroll of", random.choice(varEighthLevelSpells))
                                 if varScrollLevel >= 37 and varScrollLevel <=40:
-                                        print("You recieve a Scroll of", random.choice(varNinthLevelSpells))
+                                        print("You receive a Scroll of", random.choice(varNinthLevelSpells))
                         varConsumablesSoFar = varConsumablesSoFar +1
         print("-----------------------------------")    
         
         #check for magic items
         varMagicItem=(random.randint(1,20)) + (varEL)
         if varMagicItem <= 19:
-                print("You recieve no magic items.")
+                print("You receive no magic items.")
                 
         if varMagicItem >= 20:
                 varMagicQualityRoll=(random.randint(1,20))
@@ -531,20 +532,20 @@ while True:
                 if varMagicItemTypeRoll == 1 or varMagicItemTypeRoll == 2:
                         varEternalWandLevel=(random.randint(1,20))
                         if varEternalWandLevel >= 1 and varEternalWandLevel <= 15:
-                                print("You recieve a(n)", varMagicQuality, "rank Eternal Wand of", random.choice(varFirstLevelSpells))
+                                print("You receive a(n)", varMagicQuality, "rank Eternal Wand of", random.choice(varFirstLevelSpells))
                                 print("of", varMagicItemOrigin, "make.")
                         if varEternalWandLevel >=16 and varEternalWandLevel <= 19:
-                                print("You recieve a(n)", varMagicQuality, "rank Eternal Wand of", random.choice(varSecondLevelSpells))
+                                print("You receive a(n)", varMagicQuality, "rank Eternal Wand of", random.choice(varSecondLevelSpells))
                                 print("of", varMagicItemOrigin, "make.")
                         if varEternalWandLevel ==20:
-                                print("You recieve a(n)", varMagicQuality, "rank Eternal Wand of", random.choice(varThirdLevelSpells))
+                                print("You receive a(n)", varMagicQuality, "rank Eternal Wand of", random.choice(varThirdLevelSpells))
                                 print("of", varMagicItemOrigin, "make.")
                 
                 #magic armor
                 if varMagicItemTypeRoll == 3 or varMagicItemTypeRoll == 4:
                         varMagicItemType="Magic Armor"
                         varMagicArmorChoice=random.choice(varMagicArmorType)
-                        print("You recieve a", varMagicQuality, "rank suit of", varMagicArmorChoice) 
+                        print("You receive a", varMagicQuality, "rank suit of", varMagicArmorChoice) 
                         print("of", varMagicItemOrigin, "make.")
                         if varMagicArmorChoice == "Dragon Leather" or varMagicArmorChoice == "Studded Dragon Leather" or varMagicArmorChoice == "Dragon Scale" or varMagicArmorChoice == "Dragonsteel Plate":
                                 print("   This armor is forged of", random.choice(varDragonColor), "dragon hide.")
@@ -553,7 +554,7 @@ while True:
                 if varMagicItemTypeRoll == 5:
                         varMagicItemType="Magic Shield"
                         varShieldMat=random.choice(varMagicMaterial)
-                        print("You recieve a", varMagicQuality, "rank", varMagicItemType, ", of", varMagicItemOrigin, "make,")
+                        print("You receive a", varMagicQuality, "rank", varMagicItemType, ", of", varMagicItemOrigin, "make,")
                         print("crafted from", varShieldMat, ".")
                         if varShieldMat == "Dragonsteel": 
                                 print("   This shield is forged of", random.choice(varDragonColor), "dragon hide.")
@@ -565,7 +566,7 @@ while True:
                         varRandomWeaponChoice=random.choice(varRandomWeapon)
                         if varRandomWeaponChoice == "Telvari Viridian Rifle" or varRandomWeaponChoice == "Heavy Viridian Cannon":
                                 varMagicItemOrigin="Telvari"
-                        print("You recieve a", varMagicQuality, "rank magical weapon, a", varRandomWeaponChoice, "of")
+                        print("You receive a", varMagicQuality, "rank magical weapon, a", varRandomWeaponChoice, "of")
                         print(varMagicItemOrigin, "make, forged from", varWeaponMat, ".")
                         if varWeaponMat == "Dragonsteel":
                                 print("   This weapon is forged of", random.choice(varDragonColor), "dragonsteel.")
@@ -576,7 +577,7 @@ while True:
                                         'Dagger', 'Dagger', 'Holy Symbol', 'Holy Symbol', 'Holy Symbol', 'Orb', 'Orb', 'Psi Crystal', 'Rod', 
                                         'Rod', 'Spellbook', 'Spellbook', 'Staff', 'Staff', 'Wand', 'Wand', 'Martial Focus']
                         varMagicItemType=random.choice(varTalismanType)
-                        print("You recieve a", varMagicQuality, "rank magical talisman, a", varMagicItemType, "of")
+                        print("You receive a", varMagicQuality, "rank magical talisman, a", varMagicItemType, "of")
                         print(varMagicItemOrigin, "make.")
                         if varMagicItemType == 'Holy Symbol':
                                 print("   This Holy Symbol is dedicated to", random.choice(varDivineList),".")
@@ -584,13 +585,13 @@ while True:
                 #magic ring
                 if varMagicItemTypeRoll == 11 or varMagicItemTypeRoll == 12:
                         varMagicItemType="Magic Ring"
-                        print("You recieve a", varMagicQuality, "rank Magic Ring of", varMagicItemOrigin, "make.")
+                        print("You receive a", varMagicQuality, "rank Magic Ring of", varMagicItemOrigin, "make.")
                 
                 #dorje
                 if varMagicItemTypeRoll == 13 or varMagicItemTypeRoll == 14:
                         varMagicItemType="Dorje"
                         varDorjeClass = ['Dragon Shaman', 'Runeblade', 'Soulweaver', 'Warlock', 'Witch', 'Psion']
-                        print("You recieve a", varMagicQuality, "rank Dorje, of", varMagicItemOrigin, "make, which contains")
+                        print("You receive a", varMagicQuality, "rank Dorje, of", varMagicItemOrigin, "make, which contains")
                         print("an invocation or aptitude from the", random.choice(varDorjeClass), "class, based on its rank.")
 
                 #magic staff
@@ -633,7 +634,7 @@ while True:
                                         varSpells = varSpells +1                                
 
                                         
-                        print("You recieve a", varMagicQuality, "rank Magical Staff of", varMagicItemOrigin, "make.")
+                        print("You receive a", varMagicQuality, "rank Magical Staff of", varMagicItemOrigin, "make.")
                         print("   This staff contains", varPowers, "powers, and this/these spell(s),")
                         print("   if any are listed below:")                    
 
@@ -682,14 +683,14 @@ while True:
                                 varWandSpell=random.choice(varEighthLevelSpells)
                         if varSpellLevel >= 37 and varSpellLevel <=40:
                                 varWandSpell=random.choice(varNinthLevelSpells)
-                        print("You recieve a Magic Wand of", varWandSpell, "with", random.randint(1,10), "charges left,")
+                        print("You receive a Magic Wand of", varWandSpell, "with", random.randint(1,10), "charges left,")
                         print("of", varMagicItemOrigin, "make.")
                 
 
                 #wondrous item
                 if varMagicItemTypeRoll >= 18 and varMagicItemTypeRoll <= 20:
                         varMagicItemType="Wondrous Item"
-                        print("You recieve a", varMagicQuality, "rank Wondrous Item of", varMagicItemOrigin, "make.")
+                        print("You receive a", varMagicQuality, "rank Wondrous Item of", varMagicItemOrigin, "make.")
 
 
                 #beacon check
@@ -706,7 +707,7 @@ while True:
                 if varCursed == 1:
                         print("""      This item is cursed and instantly attunes to any 
       who pick it up. You cannot unattune this item 
-      until you recieve a remove curse spell. The item 
+      until you receive a remove curse spell. The item 
       bears an additional negative effect assigned by your DM.""")
                         
         #BIG RANDOM STUFF SECTION
@@ -721,7 +722,8 @@ while True:
                 print (" ")
                 print("You find no incidental items.")
         if varRandomStuffRolls > 0:
-                print("-----------------------------------")    
+                print("-----------------------------------")
+                print (" ")
                 print("You also find... ")
                 
         #start big random stuff loop
@@ -2199,7 +2201,7 @@ class LootzApp(tk.Tk):
         super().__init__()
         self.title('Lootz GUI')
         # widen the default window so long lines don't wrap as easily
-        self.geometry('1100x490')
+        self.geometry('550x550')
 
         tk.Label(self, text='Encounter Level (1-30):').pack(pady=5)
         self.level_entry = tk.Entry(self)
